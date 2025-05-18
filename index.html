@@ -1,220 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYRO - Everything in One Place</title>
-    <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Device Frame */
-        .device-mockup {
-            width: 800px;
-            height: 600px;
-            margin: 50px auto;
-            background: white;
-            border-radius: 40px;
-            padding: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Screen Area */
-        .screen {
-            width: 100%;
-            height: 100%;
-            background: #000;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Cosmic Gradient Background */
-        .cosmic-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                ellipse at top left,
-                rgba(255, 255, 255, 0.8) 0%,
-                rgba(100, 150, 255, 0.5) 30%,
-                rgba(0, 0, 0, 1) 70%
-            );
-        }
-        
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .mini-logo {
-            position: absolute;
-            left: 20px;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            color: white;
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .nav-links a.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        .menu-icon {
-            position: absolute;
-            right: 20px;
-            color: white;
-            font-size: 20px;
-        }
-        
-        /* ZYRO Logo */
-        .main-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -60%);
-            font-family: 'Arial', sans-serif;
-            color: white;
-            font-size: 72px;
-            font-weight: bold;
-            letter-spacing: 5px;
-            text-align: center;
-            z-index: 5;
-        }
-        
-        /* Custom ZYRO Glyphs */
-        .main-logo span {
-            display: inline-block;
-        }
-        .main-logo span:nth-child(1) { /* Z */
-            transform: scaleX(0.8);
-        }
-        .main-logo span:nth-child(2) { /* Y */
-            transform: scaleY(1.2);
-        }
-        .main-logo span:nth-child(4) { /* O */
-            position: relative;
-        }
-        .main-logo span:nth-child(4):after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 15px;
-            height: 15px;
-            background: black;
-        }
-        
-        /* Tagline */
-        .tagline {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 24px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            z-index: 5;
-        }
-        
-        /* Bottom UI Elements */
-        .ui-elements {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            z-index: 5;
-        }
-        
-        /* Scanline Effect */
-        .scanline {
-            position: absolute;
-            bottom: 30px;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(100, 150, 255, 0.5);
-            z-index: 6;
-            animation: scan 3s infinite linear;
-        }
-        
-        @keyframes scan {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZYRO Landing</title>
+<style>
+  /* Import clean geometric font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  /* Reset & base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    background: #000;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  /* Device mockup frame */
+  .device-frame {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 32px;
+    box-shadow:
+      0 20px 50px rgba(0,0,0,0.8);
+    padding: 40px 30px;
+    position: relative;
+  }
+
+  /* Background glow arcs using pseudo elements */
+  .device-frame::before,
+  .device-frame::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    z-index: 1;
+  }
+  .device-frame::before {
+    top: -150px; left: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle at top left, #fff 0%, #1a237e 70%, transparent 95%);
+  }
+  .device-frame::after {
+    top: -140px; right: -160px;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle at top right, #bbdefb 0%, #0d144d 70%, transparent 95%);
+  }
+
+  /* Container inside the device */
+  .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Navbar */
+  nav {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(255 255 255 / 0.05);
+    border-radius: 40px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    user-select: none;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  }
+
+  /* Mini ZYRO logo on left */
+  .nav-logo {
+    width: 60px;
+    height: 26px;
+  }
+  
+  /* Nav links container */
+  .nav-links {
+    display: flex;
+    gap: 26px;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 8px 18px;
+    border-radius: 24px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nav-links a.active {
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+  }
+  .nav-links a:hover:not(.active) {
+    color: #fff;
+  }
+
+  /* Menu icon on right */
+  .menu-icon {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    stroke: #fff;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Main Logo ZYRO in abstract futuristic style */
+  .main-logo {
+    width: 280px;
+    margin-bottom: 18px;
+  }
+
+  /* Tagline */
+  .tagline {
+    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    color: #eee;
+    margin-bottom: 70px;
+    user-select: none;
+  }
+
+  /* Bottom UI placeholders container */
+  .bottom-ui {
+    width: 100%;
+    max-width: 720px;
+    height: 110px;
+    position: relative;
+    user-select: none;
+  }
+  /* Faint blurred abstract placeholders */
+  .ui-placeholder {
+    position: absolute;
+    top: 20px;
+    height: 22px;
+    border-radius: 12px;
+    background: rgba(255 255 255 / 0.08);
+    filter: blur(3.8px);
+  }
+  .ui-placeholder.one {
+    left: 0; width: 140px;
+  }
+  .ui-placeholder.two {
+    left: 160px; width: 90px;
+  }
+  .ui-placeholder.three {
+    left: 270px; width: 180px;
+  }
+  .ui-placeholder.four {
+    left: 480px; width: 120px;
+  }
+
+  /* Horizontal scanline/progress bar */
+  .scanline {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 12px;
+    background: linear-gradient(
+      270deg,
+      rgba(255,255,255,0.1) 0%,
+      rgba(255,255,255,0.3) 50%,
+      rgba(255,255,255,0.1) 100%
+    );
+    animation: scan 3.8s linear infinite;
+  }
+  @keyframes scan {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .device-frame {
+      margin: 24px 12px;
+      padding: 30px 20px;
+    }
+    .main-logo {
+      width: 220px;
+      margin-bottom: 14px;
+    }
+    nav {
+      font-size: 0.9rem;
+      padding: 10px 18px;
+    }
+  }
+</style>
 </head>
 <body>
-    <!-- Device Mockup -->
-    <div class="device-mockup">
-        <div class="screen">
-            <!-- Cosmic Background -->
-            <div class="cosmic-bg"></div>
-            
-            <!-- Navigation Bar -->
-            <div class="navbar">
-                <div class="mini-logo">ZYRO</div>
-                <div class="nav-links">
-                    <a href="#" class="active">Home</a>
-                    <a href="#">Features</a>
-                    <a href="#">Specs</a>
-                </div>
-                <div class="menu-icon">☰</div>
-            </div>
-            
-            <!-- Main Logo -->
-            <div class="main-logo">
-                <span>Z</span>
-                <span>Y</span>
-                <span>R</span>
-                <span>O</span>
-            </div>
-            
-            <!-- Tagline -->
-            <div class="tagline">Everything in One Place</div>
-            
-            <!-- Bottom UI Elements -->
-            <div class="ui-elements"></div>
-            <div class="scanline"></div>
-        </div>
+
+<div class="device-frame" role="main" aria-label="ZYRO product landing page">
+
+  <div class="content">
+
+    <!-- Navigation bar -->
+    <nav role="navigation" aria-label="Main navigation">
+      <!-- Mini ZYRO logo -->
+      <svg class="nav-logo" viewBox="0 0 86 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <g fill="#fff" >
+          <!-- Abstract simplified ZYRO mini logo -->
+          <rect x="1" y="2" width="15" height="22" rx="3" />
+          <path d="M26 2H11v22h15v-6h-5v-3h4v-6h-4v-3h5V2z" />
+          <rect x="40" y="2" width="15" height="22" rx="3" />
+          <path d="M68 2h-5v22h15v-6h-5v-3h4v-6h-4v-3h5V2z" />
+          <rect x="79" y="2" width="7" height="22" rx="3" />
+        </g>
+      </svg>
+
+      <!-- Nav links -->
+      <div class="nav-links">
+        <a href="#" class="active" aria-current="page">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Specs</a>
+      </div>
+
+      <!-- Menu icon -->
+      <svg class="menu-icon" viewBox="0 0 24 24" aria-label="Menu" role="img">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </nav>
+
+    <!-- Main logo "ZYRO" in abstract modular shapes -->
+    <svg class="main-logo" viewBox="0 0 280 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ZYRO logo" role="img">
+      <g fill="#fff" stroke="#fff" stroke-width="0.6">
+        <!-- Letter Z: squared edges, vertical cut -->
+        <path d="M10 10 H40 L20 62 H50" stroke-linejoin="miter" />
+        <rect x="10" y="8" width="40" height="8" rx="1" />
+        <rect x="10" y="58" width="40" height="8" rx="1" />
+
+        <!-- Letter Y: symmetrical mechanical style -->
+        <path d="M75 10 L85 38 L95 10 M85 38 V62" stroke-linejoin="round" stroke-linecap="round"/>
+
+        <!-- Letter R: missing right vertical stroke -->
+        <path d="M110 10 V66 H130 L140 45 L125 38 L140 30" stroke-linejoin="round" stroke-linecap="round" />
+
+        <!-- Letter O: square with missing lower right corner -->
+        <path d="M180 10 H220 V58 H185 L220 62" stroke-linejoin="round" stroke-linecap="round" />
+      </g>
+    </svg>
+
+    <!-- Tagline -->
+    <div class="tagline" aria-label="Tagline: Everything in One Place">Everything in One Place</div>
+
+    <!-- Bottom UI placeholders -->
+    <div class="bottom-ui" aria-hidden="true">
+      <div class="ui-placeholder one"></div>
+      <div class="ui-placeholder two"></div>
+      <div class="ui-placeholder three"></div>
+      <div class="ui-placeholder four"></div>
+      <div class="scanline"></div>
     </div>
+
+  </div>
+
+</div>
+
 </body>
 </html>
